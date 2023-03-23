@@ -1,0 +1,24 @@
+<form #myForm="ngForm">
+    <fieldset>
+      <legend>Information générales</legend>
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" name="nom" required ngModel><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ngModel><br><br>
+      <fieldset>
+        <legend>Information de paiements</legend>
+        <label for="type-de-carte">Type de carte:</label>
+        <input type="text" id="type-de-carte" name="type-de-carte" required ngModel><br><br>
+        <label for="numero-carte">Numéro de carte:</label>
+        <input type="text" id="numero-carte" name="numero-carte" required pattern="[0-9]{16}" ngModel><br><br>
+        <label for="date-expiration">Date d'expiration:</label>
+        <input type="text" id="date-expiration" name="date-expiration" required ngModel><br><br>
+        <div [hidden]="myForm.controls['type-de-carte'].invalid || myForm.controls['numero-carte'].invalid || myForm.controls['date-expiration'].invalid">
+          <label for="code">Code:</label>
+          <input type="text" id="code" name="code" ngModel><br><br>
+        </div>
+      </fieldset>
+      <button type="submit" [disabled]="myForm.invalid">Valider</button>
+    </fieldset>
+  </form>
+  
